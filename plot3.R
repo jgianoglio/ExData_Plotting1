@@ -36,7 +36,12 @@ epcData$Sub_metering_3 <- as.numeric(epcData$Sub_metering_3)
 ## Begin plotting functions
 
 
-png(filename="plot2.png", width=480, height=480)
-with(epcData, plot(epcData$dateTime, epcData$Global_active_power, type="l", xlab="", 
-                   ylab="Global Active Power (kilowatts)"))
+png(filename="plot3.png", width=480, height=480)
+plot(epcData$dateTime, epcData$Sub_metering_1, type="n", ylim=c(0,30), ylab="Energy sub metering", xlab="")
+lines(epcData$dateTime, epcData$Sub_metering_1)
+lines(epcData$dateTime, epcData$Sub_metering_2, col="red")
+lines(epcData$dateTime, epcData$Sub_metering_3, col="blue")
+legend("topright", col=c("black", "red", "blue"), lty="solid", 
+       legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
 dev.off()
